@@ -1,0 +1,265 @@
+<html> 
+ <head> 
+  <title>Rock_Paper_Scissor</title> 
+  <link ref="stylesheet" href="RPS.css"> 
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"> 
+ <style type="text/css" id="dcoder_stylesheet">.Box{
+  height:200px;
+  width:200px;
+  border-radius:100px;
+  border:5px solid black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-left:38.5%;
+  background-color:aqua;
+}  
+#main{
+  height:90%;
+  width:90%;
+  border:5px solid black;
+  box-shadow:0px 0px 50px black;
+  border-radius:100px;
+  margin-left:5%;
+  background-color:Violet;
+  
+}
+.Box_1 img{
+    height:750px;
+    width:750px;
+    animation:spin 5s linear infinite;
+    border-radius:375px;    
+    border:2px black solid;
+    box-shadow:0px 0px 100px black;
+}
+.Box_1{
+    //background-color:gray;
+    justify-content:center;
+    align-items:center;
+    display:flex;
+    margin-top:125px;
+}
+
+@keyframes spin{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}
+body,html{
+  padding:0%;
+  margin:0%;
+  height:100%;
+  width:100%;
+  background-color:aqua;
+}
+.Box img{
+  height:150px;
+  width:150px;
+  border-radius:75px;
+  border:2px black solid;
+}
+.Button{
+  background-color:aqua;
+  width:90%;
+  height:15%;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  margin-left:45px;
+  margin-top:75px;
+  border-radius:50px;
+}
+.B{
+  height:100px;
+  width:200px;
+  border:5px solid black;
+  border-radius:50px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:violet;
+}
+.B i{
+  font-size:50px;
+  font-family:Fantasy;
+}
+h1{
+  font-size:70px;
+  font-family:Fantasy;
+  margin-left:15%;
+}
+
+#Logo{
+  height:100px;
+  width:100%;
+ display:flex;
+ align-items:center;
+ justify-content:space-around;
+}
+.Score{
+  height:100px;
+  width:100%;
+  display:flex;
+}
+.Num{
+  height:100px;
+  width:25%;
+}
+h2{
+  font-size:50px;
+  font-family:Fantasy;
+}
+#You{
+  margin-left:23%;
+}
+#Robot{
+  margin-left:23%;
+}
+h2{
+  font-family:Fantasy;
+}</style></head> 
+ <body> 
+  <h1>Rock_Paper_Scissor</h1> 
+  <div id="main"> 
+   <div id="Logo"> 
+    <div class="B" style="background-color:aqua;">
+     <i class="ri-user-line">You</i>
+    </div> 
+    <div class="B" style="background-color:aqua;">
+     <i class="ri-robot-2-line">Robot</i>
+    </div>
+    </div>
+    <div class="Score">
+     <div id="You" class="Num">
+    <h2>00</h2>
+    </div>
+      <div id="Robot" class="Num">
+    <h2>00</h2>
+    </div>
+    </div>
+    <div class="Box"> 
+     <img src="https://thumb.ac-illust.com/47/478d819df0293a8861be3cf9566d5ff3_t.jpeg"> 
+    </div> 
+    <div class="Box_1"> 
+     <img src="https://thumb.ac-illust.com/47/478d819df0293a8861be3cf9566d5ff3_t.jpeg"> 
+    </div> 
+    <div class="Button"> 
+     <div class="B" id="Rock"> <i class="ri-omega">Rock</i> 
+     </div> 
+     <div class="B" id="Paper"> <i class="ri-file-paper-2-line">Paper</i> 
+     </div> 
+     <div class="B" id="Scissor" style="padding-right:10px;padding-left:10px"> <i class="ri-scissors-2-line">Scissor</i> 
+     </div> 
+    </div> 
+  </div><script src="RPS.script"></script> 
+ 
+<script type="text/javascript" id="dcoder_script">let arr=[
+  "https://media.geeksforgeeks.org/wp-content/uploads/20210705223618/default.jpeg",
+  "https://media.geeksforgeeks.org/wp-content/uploads/20210705223645/paper.jpeg",
+  "https://media.geeksforgeeks.org/wp-content/uploads/20210705223721/scissor.jpeg"
+]
+let base="https://thumb.ac-illust.com/47/478d819df0293a8861be3cf9566d5ff3_t.jpeg"
+let brr=[
+  "Rock",
+  "Paper",
+  "Scissor"
+]
+let ys=document.querySelector("#You")
+let rs=document.querySelector("#Robot")
+
+let robot_s=0
+let you_s=0
+
+let b=document.querySelector(".Box")
+let r=document.querySelector("#Rock")
+let p=document.querySelector("#Paper")
+let s=document.querySelector("#Scissor")
+let d=0
+
+
+r.addEventListener("click",function(){
+  b.style.transition=`transform ${1}s ease`
+  b.style.transform=`rotateY(${d+=180}deg)`
+  let n=Math.floor(Math.random()*3)
+  setTimeout(function(){
+    b.style.boxShadow=`${0}px ${0}px ${50}px red`
+    b.innerHTML=`<img src=${arr[n]}>`
+  },1000)
+  setTimeout(function(){
+  b.style.transition=`transform ${1}s ease`
+  b.style.transform=`rotateY(${d+=180}deg)`
+  b.innerHTML=`<img src=${base}>`
+  },5000)
+  setTimeout(function(){
+  if(brr[n]=="Rock"){}
+  else if(brr[n]=="Paper"){
+     robot_s++;
+     rs.innerHTML=`<h2>${robot_s}</h2>`
+  }
+  else{
+    you_s++
+    ys.innerHTML=`<h2>${you_s}</h2>`
+  }
+  },5000)
+  })
+  
+  p.addEventListener("click",function(){
+
+  b.style.transition=`all ${1}s ease`
+  b.style.transform=`rotateY(${d+=180}deg)`
+  let n=Math.floor(Math.random()*3)
+  setTimeout(function(){
+    b.style.boxShadow=`${0}px ${0}px ${50}px red`
+    b.innerHTML=`<img src=${arr[n]}>`
+  },1000)
+
+  setTimeout(function(){
+  b.style.transition=`transform ${1}s ease`
+  b.style.transform=`rotateY(${d+=180}deg)`
+  b.innerHTML=`<img src=${base}>`
+  },5000)
+  
+  setTimeout(function(){
+  if(brr[n]=="Paper"){}
+  else if(brr[n]=="Scissor"){
+     robot_s++;
+     rs.innerHTML=`<h2>${robot_s}</h2>`
+  }
+  else{
+    you_s++
+    ys.innerHTML=`<h2>${you_s}</h2>`
+  }
+  },5000)
+  })
+  
+  s.addEventListener("click",function(){
+
+  b.style.transition=`all ${1}s ease`
+  b.style.transform=`rotateY(${d+=180}deg)`
+  let n=Math.floor(Math.random()*3)
+  setTimeout(function(){
+    b.style.boxShadow=`${0}px ${0}px ${50}px red`
+    b.innerHTML=`<img src=${arr[n]}>`
+  },1000)
+  setTimeout(function(){
+  b.style.transition=`transform ${1}s ease`
+  b.style.transform=`rotateY(${d+=180}deg)`
+  b.innerHTML=`<img src=${base}>`
+  },5000)
+  
+  setTimeout(function(){
+  if(brr[n]=="Scissor"){}
+  else if(brr[n]=="Rock"){
+     robot_s++;
+     rs.innerHTML=`<h2>${robot_s}</h2>`
+  }
+  else{
+    you_s++
+    ys.innerHTML=`<h2>${you_s}</h2>`
+  }
+  },5000)
+  
+  })</script></body></html>
